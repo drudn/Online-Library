@@ -1,0 +1,43 @@
+<div class="container mt-5" *ngIf="!bookdeleted">
+  <div class="row" *ngIf="book">
+    <div class="col-6">
+  <img src="{{book.imageUrl}}" alt="{{book.title}}" class="img-fluid w-100">
+    </div>
+    <div class="col-6">
+      <div class="d-flex justify-content-start align-items-center">
+        <button class="btn btn-danger btn-lg ml-4" (click)="deleteBook()">Delete</button>
+      </div>
+    </div>
+
+    <div class="col-12 ml-3">
+      <h2>{{book.title}}</h2>
+      <h3>By {{book.author}}</h3>
+    </div>
+    <div class="col-12 mt-3">
+      <h3>Description:</h3>
+      <h4>{{book.description}}</h4>
+    </div>
+  </div>
+</div>
+<div class="row my-5">
+  <div class="col-6">
+    <h3><b>Date Borrowed:</b></h3>
+    <table class="table">
+      <tr *ngFor="let item of bookhistory">
+        <td *ngIf="item.dateBorrowed">{{item.dateBorrowed|date}} </td>
+      </tr>
+  </table>
+  </div>
+<div class="col-6">
+  <h3><b>Date Returned:</b></h3>
+  <table class="table">
+    <tr *ngFor="let item of bookhistory">
+      <td *ngIf="item.dateReturned">{{item.dateReturned|date}} </td>
+    </tr>
+</table>
+</div>
+</div>
+<div *ngIf="bookdeleted">
+  Book has been removed
+  <button class="btn btn-primary" [routerLink]="['']" >   Ok   </button>
+</div>

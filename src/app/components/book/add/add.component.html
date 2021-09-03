@@ -1,0 +1,35 @@
+<div class="container" *ngIf="!bookadded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div id="user-data">
+          <div class="form-group">
+            <label for="username">Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input type="text" id="author" class="form-control" formControlName="author">
+          </div>
+          <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="number" id="isbn" class="form-control" formControlName="isbn">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" class="form-control" formControlName="description">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" >Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="bookadded">
+  Book has been added
+  <br>
+  <br>
+  <button class="btn btn-primary" [routerLink]="['']" >     Okay     </button>
+</div>
+
+
